@@ -1,0 +1,33 @@
+%% CW theme for beamer
+%% Copyright © 2012 Sébastien Gross  <seb•ɑƬ•chezwam•ɖɵʈ•org>
+%%
+%% This file may be distributed and/or modified
+%%
+%% 1. under the LaTeX Project Public License and/or
+%% 2. under the WTF Public License.
+%%
+%%
+%% To install it copy the tango directory to either:
+%%   - $TEXHOME/tex/latex/
+%%   - ~/texmf/tex/latex/
+%%   - ~/Library/texmf/tex/latex
+%%
+%% And simply use:
+%%  \input{CWbeamer.cls}
+%%
+
+\ProvidesPackage{beamerthemecw}[2012/11/20 v1.0]
+
+\mode<presentation>
+
+\useinnertheme{rounded}
+\useoutertheme[subsection=true]{cw}
+\useinnertheme{cw}
+\usecolortheme{cw}
+
+\setbeamerfont{block title}{size={}}
+
+\mode
+<all>
+
+\endinput

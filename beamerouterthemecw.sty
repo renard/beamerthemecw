@@ -1,0 +1,120 @@
+%% CW theme for beamer
+%% Copyright © 2012 Sébastien Gross  <seb•ɑƬ•chezwam•ɖɵʈ•org>
+%%
+%% This file may be distributed and/or modified
+%%
+%% 1. under the LaTeX Project Public License and/or
+%% 2. under the WTF Public License.
+%%
+%%
+%% To install it copy the tango directory to either:
+%%   - $TEXHOME/tex/latex/
+%%   - ~/texmf/tex/latex/
+%%   - ~/Library/texmf/tex/latex
+%%
+%% And simply use:
+%%  \input{CWbeamer.cls}
+%%
+
+
+\ProvidesPackage{beamerouterthemecw}[2012/11/20 v1.0]
+
+\mode<presentation>
+
+\beamer@compresstrue
+
+\newif\ifbeamer@cw@subsection
+
+\DeclareOptionBeamer{subsection}[true]{\csname beamer@cw@subsection#1\endcsname}
+\ExecuteOptionsBeamer{subsection=true}
+\ProcessOptionsBeamer
+
+
+
+
+\defbeamertemplate{headline}{cw}
+{%
+  % mini frame section progression bar
+  \begin{beamercolorbox}
+    [ht=2.25ex,dp=3.75ex]
+    {section in head/foot}
+    \usebeamerfont{section in head/foot}
+    \insertnavigation{\paperwidth}
+  \end{beamercolorbox}%
+
+  % subsection title
+  \begin{beamercolorbox}
+    [ht=2.125ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{subsection in head/foot}
+    \usebeamerfont{subsection in head/foot}
+    \insertsubsectionhead
+  \end{beamercolorbox}%
+}%
+
+
+\defbeamertemplate{frametitle}{cw}
+{%
+  \nointerlineskip%
+
+  \usebeamerfont{headline}%
+
+  \begin{beamercolorbox}
+    [wd=\paperwidth,leftskip=.3cm,rightskip=.3cm plus1fil,vmode]{frametitle}
+    \usebeamerfont*{frametitle}
+    \strut\insertframetitle\strut
+
+    % frame subtitle
+    \ifx\insertframesubtitle\@empty%
+    \else%
+        {\usebeamerfont{framesubtitle}%
+          \usebeamercolor[fg]{framesubtitle}%
+          \insertframesubtitle\strut}%
+        \fi%
+
+  \end{beamercolorbox}%
+
+  \nointerlineskip
+
+}
+
+
+
+\defbeamertemplate{footline}{cw}{
+  \vskip-9ex%
+
+  %% %Begin of additions - note that this is pure guesswork
+  %% \vskip2pt%
+  %% \begin{beamercolorbox}[wd=0.9925\paperwidth,right]{}
+  %%   \usebeamertemplate***{navigation symbols}%
+  %% \end{beamercolorbox}
+  %% \vskip2pt%
+  %% % End of additions
+
+ \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}
+      [wd=.333333\paperwidth,ht=2.1ex,dp=1ex,center]
+      {author in head/foot}%
+      \usebeamerfont{author in head/foot}
+      \insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}
+      [wd=.333333\paperwidth,ht=2.1ex,dp=1ex,center]
+      {title in head/foot}%
+      \usebeamerfont{title in head/foot}
+      \insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}
+      [wd=.333333\paperwidth,ht=2.1ex,dp=1ex,right]
+      {date in head/foot}%
+      \usebeamerfont{date in head/foot}
+      \insertdate{}\hspace*{2em}
+      \textbf{\insertframenumber{}} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+
+
+\mode<all>
+
+\endinput
